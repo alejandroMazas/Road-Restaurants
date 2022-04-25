@@ -2,7 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema(
     {
-        author: String,
+        author: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         comment: String,
         date: date,
         likes: { likes: Number, imagen: string },

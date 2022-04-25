@@ -2,8 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const restaurantSchema = new Schema(
     {
-        restaurantName: { type: String },
-        restaurantImage: { type: String },
+        restaurantName: String,
+        restaurantImage: String ,
         restaurantType: {
             type: String,
             enum: ["Casera", "Asador", "Hotel/Hostal", "Cafeteria/Bar", "Gourmet", "Varios"]
@@ -12,42 +12,43 @@ const restaurantSchema = new Schema(
             type: String,
             enum: ["En carretera", "Desvio cercano", "En pueblo", "Desvio lejos"]
         },
-        restaurantDescription: { type: String },
+        restaurantDescription: String,
         restaurantRating: {
             type: String,
-            enum: ["1", "2", "4", "3", "4", "5"]
+            enum: ["1", "2", "3", "4", "5"]
 
         },
         restaurantRatingDetails: [{
             restaurantQualityPrice: {
                 type: String,
-                enum: ["1", "2", "4", "3", "4", "5"]
+                enum: ["1", "2", "3", "4", "5"]
 
             },
             restaurantService: {
                 type: String,
-                enum: ["1", "2", "4", "3", "4", "5"]
+                enum: ["1", "2", "3",  "4", "5"]
 
             },
-            restaurantMaintenace: {
+            restaurantAmbience: {
                 type: String,
-                enum: ["1", "2", "4", "3", "4", "5"]
+                enum: ["1", "2", "3", "4", "5"]
 
             },
 
         }],
         restaurantComments: { type: String },
-
+        ratingComments: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }],
+        
         location: {
             type: {
                 type: String
             },
             coordinates: [Number]
         },
-        ratingText: [{
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }]
+       
     },
     {
         timestamps: true,
