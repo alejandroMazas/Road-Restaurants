@@ -1,27 +1,37 @@
-// const router = require("express").Router()
+const router = require("express").Router()
 
-// const User = require('./../models/User.model')
+const User = require('./../models/User.model')
 
-// const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
+const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
 
-// router.get('/users/create', (req, res) => {
-//     res.render('users/new-user')
 
-// })
+//User profile
+router.get('/users/details/:id', (req, res, next) => {
 
-// router.post('/users/create', (req, res) => {
+    const { id } = req.params
+    User
+        .findById(id)
+        .then(user => {
+            res.render('users/my-profile', { user })
+        })
+        .catch(err => console.log(err))
+})
 
-//     const { userName, email, UserImage, bio, password } = req.body
 
-//     User
-//         .create({ userName, email, UserImage, bio, password })
-//         .then(newUsername => {
-//             res.redirect('/my-profile')
-//         })
-//         .catch(err => {
-//             res.render('users/new-user')
 
-//         })
-// })
+// router.get('/users/details/:id/edit', (req, res, next) => {
 
-// module.exports = router;
+//     res.render('/update-form')
+// const { id } = req.params
+// const { username, email, bio, password } = req.body
+
+// User
+//     .findByIdAndUpdate(id, { username, email, bio, password })
+//     .then(updateUser => {
+//         res.redirect('/update-form')
+//     })
+//     .catch(err => console.log(err))
+
+// });
+
+module.exports = router;

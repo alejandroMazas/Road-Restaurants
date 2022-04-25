@@ -7,29 +7,29 @@ const saltRounds = 10
 
 const User = require('../models/User.model')
 
-router.get('/registro', (req, res) => {
-    res.render('auth/signup')
+router.get('/register', (req, res) => {
+    res.render('auth/sign-up')
 })
 
-router.post('/registro', (req, res, next) => {
+router.post('/register', (req, res, next) => {
 
-    const { username, email, plainPassword } = req.body
+    const { username, email, bio, plainPassword } = req.body
 
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(plainPassword, salt))
-        .then(hashedPassword => User.create({ username, email, password: hashedPassword }))
-        .then(() => res.redirect('/inicio-sesion'))
+        .then(hashedPassword => User.create({ username, email, password: hashedPassword, bio }))
+        .then(() => res.redirect('/login'))
         .catch(error => next(error));
 })
 
 
-router.get('/inicio-sesion', (req, res) => {
+router.get('/login', (req, res) => {
     res.render('auth/login')
 })
 
 
-router.post('/inicio-sesion', (req, res, next) => {
+router.post('/login', (req, res, next) => {
 
     const { email, plainPassword } = req.body
 
@@ -50,15 +50,15 @@ router.post('/inicio-sesion', (req, res, next) => {
                 res.render('auth/login', { errorMessage: 'Contraseña no válida' })
                 return
             }
-
-            req.session.currentUser = user          // <= THIS means logging in a user
-            res.redirect('/mi-perfil')
+            req.session.currentUser = user         // <= THIS means logging in a user
+            console.log(req.session.currentUser)
+            res.redirect(`/users/details/${user._id}`)
         })
         .catch(error => next(error));
 })
 
 
-router.post('/cerrar-sesion', (req, res, next) => {
+router.post('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/'))
 })
 
