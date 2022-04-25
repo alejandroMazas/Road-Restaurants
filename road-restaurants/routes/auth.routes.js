@@ -3,15 +3,15 @@ const router = require("express").Router();
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 
-//const { isLoggedOut } = require('./../middleware/route-guard')
+const { isLoggedOut } = require('./../utils/middlewares/route.guard')
 
 const User = require('../models/User.model')
 
-router.get('/registro', (req, res) => {
+router.get('/register', (req, res) => {
     res.render('auth/signup')
 })
 
-router.post('/registro', (req, res, next) => {
+router.post('/register', (req, res, next) => {
 
     const { username, email, plainPassword } = req.body
 
@@ -19,17 +19,17 @@ router.post('/registro', (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(plainPassword, salt))
         .then(hashedPassword => User.create({ username, email, password: hashedPassword }))
-        .then(() => res.redirect('/inicio-sesion'))
+        .then(() => res.redirect('/login'))
         .catch(error => next(error));
 })
 
 
-router.get('/inicio-sesion', (req, res) => {
+router.get('/login', (req, res) => {
     res.render('auth/login')
 })
 
 
-router.post('/inicio-sesion', (req, res, next) => {
+router.post('/login', (req, res, next) => {
 
     const { email, plainPassword } = req.body
 
@@ -58,7 +58,7 @@ router.post('/inicio-sesion', (req, res, next) => {
 })
 
 
-router.post('/cerrar-sesion', (req, res, next) => {
+router.post('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/'))
 })
 

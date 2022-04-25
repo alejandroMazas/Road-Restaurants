@@ -53,7 +53,7 @@ const restaurantSchema = new Schema(
 
 restaurantSchema.index({ location: '2dsphere' })
 
-const Place = model("Restaurant", restauranStchema);
+const Place = model("Restaurant", restaurantSchema);
 
 module.exports = Place;
 
