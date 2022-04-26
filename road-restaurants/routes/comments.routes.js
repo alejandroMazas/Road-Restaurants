@@ -2,15 +2,17 @@ const router = require("express").Router();
 
 const Comment = require('../models/Comment.model')
 
-router.post('/comment/create', (req, res) => {
+router.post('/comment/:id/create', (req, res) => {
 
     const { comment } = req.body
-    const userId = req.session.currentUser._id
+    const { id } = req.params   // id del restaurante
+    const userId = req.session.currentUser._id  // id del autor
 
     Comment
-        .create({ author: userId, comment, date: new Date()})
+
+        .create({ author: userId, restaurant: id, comment, date: new Date() })
         .then(newComment => {
-            res.render('restaurants/list')
+            res.redirect(`/restaurants/details/${id}`)
         })
         .catch(err => console.log(err))
 
