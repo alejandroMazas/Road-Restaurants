@@ -52,7 +52,7 @@ router.post('/login', (req, res, next) => {
             }
             req.session.currentUser = user         // <= THIS means logging in a user
             console.log(req.session.currentUser)
-            res.redirect('/users/details')
+            res.redirect(`/users/details`)
         })
         .catch(error => next(error));
 })
