@@ -1,1 +1,54 @@
-<h1>update form</h1>
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h2>Editar el usuario</h2>
+
+            <hr>
+
+            <form action="/users/details/{{_id}}/edit" method="POST">
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="{{email}}">
+
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="plainPassword"
+                        value="{{plainPassword}}">
+
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Sobre ti</label>
+                    <input type="text" class="form-control" id="bio" value="{{bio}}">
+                </div>
+                <div class="mb-3">
+                    <label for="userImage" class="form-label">Subir imagen de perfil</label>
+                    <br>
+                    {{!-- <form action="#">
+                        <input type="file" name="image">
+                    </form> --}}
+                </div>
+
+
+                <button type="submit" class="btn btn-dark">Editar Usuario/a</button>
+                <a href="/" class="btn btn-dark">Volver al incio</a>
+
+            </form>
+            <hr>
+            <form action="/users/details/{{_id}}/delete" method="POST">
+                <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+</div>
