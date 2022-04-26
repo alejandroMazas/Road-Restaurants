@@ -6,18 +6,18 @@ const restaurantSchema = new Schema(
         image: String,
         type: {
             type: String,
-            enum: ["Casera", "Asador", "Hotel/Hostal", "Cafeteria/Bar", "Gourmet", "Varios"]
+            enum: ["casera", "asador", "hotel/hostal", "cafeteria/bar", "gourmet", "varios"]
         },
         place: {
             type: String,
-            enum: ["En carretera", "Desvio cercano", "En pueblo", "Desvio lejos"]
+            enum: ["en carretera", "desvio cercano", "en pueblo", "desvio lejos"]
         },
         description: String,
         rating: {
             type: Number,
             enum: [1, 2, 3, 4, 5]
         },
-        ratingDetails: [{
+        ratingDetails: {
             qualityPrice: {
                 type: Number,
                 enum: [1, 2, 3, 4, 5]
@@ -32,7 +32,7 @@ const restaurantSchema = new Schema(
                 type: Number,
                 enum: [1, 2, 3, 4, 5]
             },
-        }],
+        },
         opinion: String,
         location: {
             type: {

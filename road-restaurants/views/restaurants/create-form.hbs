@@ -1,0 +1,95 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-6">
+
+
+            <h2>Create your Restaurant</h2>
+
+            <form action="/restaurants/create" method="POST">
+                <div class="mb-3">
+                    <label for="restaurantname" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="restaurantname">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Imagen</label>
+                    <input type="text" class="form-control" name="image">
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Tipo</label>
+                    <select name="type" class="form-select" size="1" multiple>
+                        <option value="casera">casera</option>
+                        <option value="asador">asador</option>
+                        <option value="hotel/hostal">hotel/hostal</option>
+                        <option value="cafeteria/bar">cafeteria/bar</option>
+                        <option value="gourmet">cafeteria/bar</option>
+                        <option value="varios">varios</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Tipo</label>
+                    <select name="place" class="form-select" size="1" multiple>
+                        <option value="en carretera">En carretera</option>
+                        <option value="desvio cercanor">asador</option>
+                        <option value="en pueblo">hotel/hostal</option>
+                        <option value="desvio lejano">cafeteria/bar</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" name="description">
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Tipo</label>
+                    <select name="rating" class="form-select" size="1" multiple>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quality" class="form-label">Tipo</label>
+                    <select name="quality" class="form-select" size="1" multiple>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="service" class="form-label">Tipo</label>
+                    <select name="service" class="form-select" size="1" multiple>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="ambience" class="form-label">Tipo</label>
+                    <select name="ambience" class="form-select" size="1" multiple>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="opinion" class="form-label">opinion</label>
+                    <input type="text" class="form-control" name="opinion">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
