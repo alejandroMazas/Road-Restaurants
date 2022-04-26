@@ -40,10 +40,10 @@ const restaurantSchema = new Schema(
             },
             coordinates: [Number]
         },
-        ratingComments: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Comment'
-        }]
+        // ratingComments: [{
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Comment'
+        // }]
     },
     {
         timestamps: true,

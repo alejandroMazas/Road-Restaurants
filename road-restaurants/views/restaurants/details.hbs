@@ -4,6 +4,7 @@
 
         <div class="col-6">
 
+            {{#with restaurant}}
             <h2>{{name}}</h2>
 
             <hr>
@@ -23,34 +24,39 @@
             <p class="features">Opinión {{opinion}}</p>
 
             <a class="editButton" href="/restaurants/{{_id}}/edit">Editar restaurante</a>
-
+            {{/with}}
         </div>
 
     </div>
 
 
 </div>
-<h1>DeTAlles restaurantes</h1>
+
+<hr>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
             <h1>Comentarios</h1>
             <hr>
-            <form action="/comment/create" method="POST">
+            <form action="/comment/{{restaurant._id}}/create" method="POST">
 
                 <div class="mb-3">
                     <label for="comment" class="form-label">Crear comentario</label>
                     <input type="text" class="form-control" id="comment" name="comment">
                 </div>
 
-                <div class="mb-3">
-                    {{_userId}}
-                    {{date}}
-                </div>
 
                 <button type="submit" class="btn btn-dark">Crear nuevo comentario</button>
             </form>
+
+            <div class="mb-3">
+
+                {{#each comments}}
+                <p>{{comment}}</p>
+                <p>{{author.username}}</p>
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>

@@ -6,6 +6,10 @@ const commentSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
+        restaurant: {
+            type: Schema.Types.ObjectId,
+            ref: 'Restaurant'
+        },
         comment: String,
         date: Date,
         likes: Number,
