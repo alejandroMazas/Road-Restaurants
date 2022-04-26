@@ -1,1 +1,42 @@
-<h1>funcionnnaaaa</h1>
+<div class="container">
+
+    <div class="row">
+
+        {{#each restaurants}}
+
+        <div class="col-6">
+
+            <div class="row">
+
+                <h1>{{name}}</h1>
+
+                <div class="col-6">
+
+
+                    <figure><img src="{{user.image}}" alt="imagen"></figure>
+
+                    <p class="features">Descripción {{description}}</p>
+
+                    <p class="features">Puntuación {{rating}}</p>
+
+
+                    <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+                    <hr>
+                    {{!-- <form action="/drones/{{_id}}/delete" method="POST">
+                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                    </form> --}}
+
+                </div>
+
+                {{!-- <div class="col-6">
+                    <img class="imag" src="/images/{{image}}.jpg" alt="Dron Image">
+                </div> --}}
+
+            </div>
+
+
+        </div>
+        {{/each}}
+    </div>
+
+</div>

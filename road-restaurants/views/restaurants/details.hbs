@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-6">
+
+            <h2>{{name}}</h2>
+
+            <hr>
+
+            <p class="features"><strong>Tipo:</strong> {{type}}</p>
+            <p class="features"><strong>Lugar de emplazamiento:</strong> {{place}}</p>
+            <p class="features"><strong>Descripción:</strong> {{description}}</p>
+            <p class="rating">Puntuación: {{rating}}</p>
+
+
+            <ul>
+                <li>Calidad/precio {{ratingDetails.qualityPrice}}</li>
+                <li>Servicio/atención al cliente {{ratingDetails.service}}</li>
+                <li>Ambiente {{ratingDetails.ambience}}</li>
+            </ul>
+
+            <p class="features">Opinión {{opinion}}</p>
+
+            <a class="editButton" href="/restaurants/{{_id}}/edit">Editar restaurante</a>
+
+        </div>
+
+    </div>
+
+
+</div>

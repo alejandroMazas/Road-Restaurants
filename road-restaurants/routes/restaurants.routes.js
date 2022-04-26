@@ -24,10 +24,29 @@ router.post('/restaurants/create', (req, res) => {
         .then(newRestaurant => {
             res.redirect('/restaurants')
         })
+        .catch(err => console.log(err))
 })
 
 router.get('/restaurants', (req, res) => {
-    res.send('funcionaaaa')
+
+    Restaurant
+        .find()
+        .then(restaurants => {
+            res.render('restaurants/list', { restaurants })
+        })
+        .catch(err => console.log(err))
+})
+
+router.get('/restaurants/details/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Restaurant
+        .findById(id)
+        .then(restaurant => {
+            res.render('restaurants/details', restaurant)
+        })
+        .catch(err => console.log(err))
 })
 
 
