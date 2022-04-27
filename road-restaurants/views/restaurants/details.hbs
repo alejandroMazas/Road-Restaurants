@@ -66,6 +66,13 @@
                     <button class="btn btn-sm btn-warning" type="submit">Delete</button>
                 </form>
                 {{/if}}
+
+                {{#if ../../isAdmin}}
+                <form action="/comment/{{../../restaurant._id}}/delete/{{_id}}" method="POST">
+                    <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                </form>
+                {{/if}}
+
                 {{/with}}
                 {{/each}}
 

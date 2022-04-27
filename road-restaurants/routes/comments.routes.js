@@ -3,7 +3,7 @@ const router = require("express").Router();
 const Comment = require('../models/Comment.model')
 const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard");
 
-router.post('/comment/:id/create', isLoggedIn, (req, res) => {
+router.post('/:id/create', isLoggedIn, (req, res) => {
 
     const { comment } = req.body
     const { id } = req.params   // id del restaurante
@@ -15,12 +15,11 @@ router.post('/comment/:id/create', isLoggedIn, (req, res) => {
         .then(newComment => {
             res.redirect(`/restaurants/details/${id}`)
         })
-        .catch(err => console.log(err))
-
+        .catch(err => next(err))
 })
 
 
-router.post('/comment/:restaurantId/delete/:commentId', (req, res) => {
+router.post('/:restaurantId/delete/:commentId', (req, res) => {
 
     const { restaurantId, commentId } = req.params
 
@@ -29,7 +28,7 @@ router.post('/comment/:restaurantId/delete/:commentId', (req, res) => {
         .then(() => {
             res.redirect(`/restaurants/details/${restaurantId}`)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 

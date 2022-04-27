@@ -10,19 +10,19 @@ module.exports = app => {
 
     // User routes
     const usersRouter = require("./users.routes")
-    app.use("/", usersRouter)
+    app.use("/users", usersRouter)
 
     // Restaurant routes
     const restsRouter = require("./restaurants.routes")
-    app.use("/", restsRouter)
+    app.use("/restaurants", restsRouter)
 
     // Comments routes
     const commentsRouter = require("./comments.routes")
-    app.use("/", commentsRouter)
+    app.use("/comment", commentsRouter)
 
     // Api routes
     const apiRouter = require("./api.routes")
-    app.use("/", apiRouter)
+    app.use("/api", apiRouter)
 
 
 }

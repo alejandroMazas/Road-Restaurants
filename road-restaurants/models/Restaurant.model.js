@@ -2,7 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const restaurantSchema = new Schema(
     {
-        name: String,
+        name: {
+            type: String, required: [true, 'El nombre del restaurante es obligatorio'],
+        },
         image: String,
         type: {
             type: String,
@@ -15,7 +17,8 @@ const restaurantSchema = new Schema(
         description: String,
         rating: {
             type: Number,
-            enum: [1, 2, 3, 4, 5]
+            enum: [1, 2, 3, 4, 5],
+            required: [true, 'Añade una puntuación general'],
         },
         ratingDetails: {
             qualityPrice: {

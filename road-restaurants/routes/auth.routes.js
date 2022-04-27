@@ -20,7 +20,7 @@ router.post('/register', (req, res, next) => {
         .then(salt => bcryptjs.hash(plainPassword, salt))
         .then(hashedPassword => User.create({ username, email, password: hashedPassword, bio }))
         .then(() => res.redirect('/login'))
-        .catch(error => next(error));
+        .catch(err => next(err))
 })
 
 
@@ -51,14 +51,20 @@ router.post('/login', (req, res, next) => {
                 return
             }
             req.session.currentUser = user         // <= THIS means logging in a user
+            if (user.role === 'ADMIN') {
+                req.app.locals.isAdmin = true
+            } else {
+                req.app.locals.isAdmin = false
+            }
             console.log(req.session.currentUser)
             res.redirect(`/users/details`)
         })
-        .catch(error => next(error));
+        .catch(err => next(err))
 })
 
 
 router.post('/logout', (req, res, next) => {
+    req.app.locals.isAdmin = false
     req.session.destroy(() => res.redirect('/'))
 })
 

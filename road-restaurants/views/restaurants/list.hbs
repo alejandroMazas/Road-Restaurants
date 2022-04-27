@@ -13,7 +13,7 @@
                 <div class="col-6">
 
 
-                    <figure><img src="{{user.image}}" alt="imagen"></figure>
+                    <figure><img src="{{restaurant.image}}" alt="imagen"></figure>
 
                     <p class="features">Descripción {{description}}</p>
 
@@ -21,6 +21,8 @@
 
 
                     <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+
+                    <a href="/restaurants/create/">Crear restaurante</a>
 
                     <hr>
                     <form action="/restaurants/{{_id}}/delete" method="POST">
@@ -34,6 +36,8 @@
                 </div> --}}
 
             </div>
+
+
 
 
         </div>

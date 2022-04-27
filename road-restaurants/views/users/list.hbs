@@ -1,1 +1,32 @@
-<h1>renderizas</h1>
+<div class="container">
+
+    <div class="row">
+
+        {{#each users}}
+
+        <div class="col-6">
+
+            <div class="row">
+
+                <h1><a href="/users/details/{{_id}}"></a>{{username}}</h1>
+
+                <div class="col-6">
+
+
+                    <figure><img src="{{user.image}}" alt="imagen"></figure>
+
+                    <hr>
+                    <form action="/restaurants/{{_id}}/delete" method="POST">
+                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        {{/each}}
+    </div>
+
+</div>
