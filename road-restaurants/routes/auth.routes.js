@@ -50,7 +50,7 @@ router.post('/login', (req, res, next) => {
                 res.render('auth/login', { errorMessage: 'Contraseña no válida' })
                 return
             }
-            req.session.currentUser = user         // <= THIS means logging in a user
+            req.session.currentUser = user        
             console.log(req.session.currentUser)
             res.redirect(`/users/details`)
         })

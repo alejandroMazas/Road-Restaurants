@@ -23,6 +23,8 @@
 
             <p class="features">Opinión {{opinion}}</p>
 
+
+    
             <a class="editButton" href="/restaurants/details/{{_id}}/edit">Editar restaurante</a>
             {{/with}}
         </div>
@@ -33,8 +35,8 @@
 <hr>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
+    <div class="row justify-content">
+        <div class="col-md-4">
             <h3>Comentarios</h3>
             <hr>
             <form action="/comment/{{restaurant._id}}/create" method="POST">
@@ -44,13 +46,10 @@
                     <input type="text" class="form-control" id="comment" name="comment">
                 </div>
 
-
                 <button type="submit" class="btn btn-dark">Crear nuevo comentario</button>
             </form>
 
             <div class="mb-3">
-
-
 
                 {{#each comments}}
                 {{#with comment}}
@@ -72,4 +71,19 @@
             </div>
         </div>
     </div>
+    <div class="row justify-content">
+        <div class="col-md-8">
+
+            <figure id="map"></figure>
+
+        </div>
+    </div>
 </div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/places-map.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>

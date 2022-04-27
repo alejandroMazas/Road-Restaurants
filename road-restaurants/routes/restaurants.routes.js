@@ -1,18 +1,18 @@
-const router = require("express").Router();
+const router = require("express").Router()
+
 const Restaurant = require('../models/Restaurant.model')
-const Comment = require('../models/Comment.model');
-const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard");
+const Comment = require('../models/Comment.model')
+
+const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard")
 
 router.get('/restaurants/create', isLoggedIn, (req, res, next) => {
     res.render('restaurants/create-form', { user: req.session.currentUser })
-
-
 
 })
 
 router.post('/restaurants/create', (req, res, next) => {
 
-    const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion } = req.body
+    const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion, longitude, latitude } = req.body
 
     Restaurant
         .create({
@@ -23,7 +23,11 @@ router.post('/restaurants/create', (req, res, next) => {
             description,
             rating,
             ratingDetails: { qualityPrice: quality, service: service, ambience: ambience, },
-            opinion
+            opinion,
+            location: {
+                type: 'Point',
+                coordinates: [longitude, latitude]
+            }
         })
         .then(newRestaurant => {
             res.redirect('/restaurants')
@@ -70,8 +74,6 @@ router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
             res.render('restaurants/details', { restaurant, comments })
         })
         .catch(err => console.log(err))
-
-
 })
 
 router.get('/restaurants/details/:id/edit', isLoggedIn, (req, res, next) => {

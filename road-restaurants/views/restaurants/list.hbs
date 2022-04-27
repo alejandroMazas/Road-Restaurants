@@ -11,22 +11,14 @@
                 <h1>{{name}}</h1>
 
                 <div class="col-6">
-
-
                     <figure><img src="{{user.image}}" alt="imagen"></figure>
-
                     <p class="features">Descripción {{description}}</p>
-
                     <p class="features">Puntuación {{rating}}</p>
-
-
                     <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
-
                     <hr>
                     <form action="/restaurants/{{_id}}/delete" method="POST">
                         <button class="btn btn-sm btn-warning" type="submit">Delete</button>
                     </form>
-
                 </div>
 
                 {{!-- <div class="col-6">
@@ -41,3 +33,26 @@
     </div>
 
 </div>
+
+
+
+    <div class="row justify-content">
+        <div class="col-md-8">
+    
+            <figure id="map"></figure>
+    
+        </div>
+    </div>
+    </div>
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/places-map.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>
+
+
+<a href="/">Volver al incio</a>
+

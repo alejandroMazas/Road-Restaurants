@@ -1,4 +1,14 @@
-const router = require("express").Router();
+const router = require('express').Router()
+const Restaurant = require('../models/Restaurant.model')
 
 
-module.exports = router;
+router.get('/api/json', (req, res) => {
+
+    Restaurant
+        .find()
+        .then(restaurants => res.json(restaurants))
+        .catch(err => console.log(err))
+})
+
+
+module.exports = router

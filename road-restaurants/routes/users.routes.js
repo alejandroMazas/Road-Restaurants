@@ -4,8 +4,6 @@ const User = require('./../models/User.model')
 
 const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
 
-
-//User profile
 router.get('/users/details', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.session.currentUser
@@ -18,6 +16,7 @@ router.get('/users/details', isLoggedIn, (req, res, next) => {
 })
 
 router.get('/users/details/:id/edit', isLoggedIn, (req, res, next) => {
+  
     const { id } = req.params
 
     User
@@ -30,6 +29,7 @@ router.get('/users/details/:id/edit', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/users/details/:id/edit', (req, res, next) => {
+    
     const { id } = req.params
     const { username, email, bio, password } = req.body
 

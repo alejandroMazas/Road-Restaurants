@@ -1,9 +1,6 @@
 <div class="container">
-
     <div class="row">
-
         <div class="col-6">
-
 
             <h2>Crea tu restaurante</h2>
 
@@ -84,12 +81,38 @@
                     <label for="opinion" class="form-label">Opinión</label>
                     <input type="text" class="form-control" name="opinion">
                 </div>
-
-                <button type="submit" class="btn btn-primary">Crear Restaurante</button>
-            </form>
-
+{{!-- 
+                <div id="pac-container">
+                    <label for="location" class="form-label">Introduzca un restaurante</label>
+                    <input id="pac-input" type="text" placeholder="Enter a location" />
+                </div>
         </div>
+        <div id="map"></div>
+        <div id="infowindow-content">
+            <span id="place-name" class="title"></span><br />
+            <span id="place-address"></span>
+        </div> --}}
+        ç
+        <div class="mb-3">
+            <label for="name" class="form-label">Latitud</label>
+            <input type="text" name="latitude" placeholder="latitud" value="{{location.coordinates.[0]}}">
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Longitud</label>
+            <input type="text" name="longitude" placeholder="longitud" value="{{location.coordinates.[1]}}">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Crear Restaurante</button>
+        </form>
 
     </div>
 
 </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/places-map.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>

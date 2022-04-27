@@ -24,5 +24,4 @@ module.exports = app => {
     const apiRouter = require("./api.routes")
     app.use("/", apiRouter)
 
-
 }
