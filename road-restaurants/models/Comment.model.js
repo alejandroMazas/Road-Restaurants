@@ -10,7 +10,7 @@ const commentSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Restaurant'
         },
-        comment: String,
+        comment: { type: String, maxlength: 150, require: true },
         date: Date,
         likes: Number,
         dislikes: Number

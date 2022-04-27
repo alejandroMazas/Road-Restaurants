@@ -5,12 +5,13 @@ const Comment = require('../models/Comment.model')
 
 const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard")
 
-router.get('/restaurants/create', isLoggedIn, (req, res, next) => {
-    res.render('restaurants/create-form', { user: req.session.currentUser })
+router.get('/create', isLoggedIn, (req, res, next) => {
+    res.render('restaurants/create-form')
 
 })
 
-router.post('/restaurants/create', (req, res, next) => {
+router.post('/create', (req, res, next) => {
+
 
     const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion, longitude, latitude } = req.body
 
@@ -30,23 +31,25 @@ router.post('/restaurants/create', (req, res, next) => {
             }
         })
         .then(newRestaurant => {
-            res.redirect('/restaurants')
+            res.redirect('/')
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
-router.get('/restaurants', (req, res) => {
+router.get('/', (req, res) => {
+
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
 
     Restaurant
         .find()
         .then(restaurants => {
             res.render('restaurants/list', { restaurants })
         })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(err)) })
 
-router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
+router.get('/details/:id', isLoggedIn, (req, res, next) => {
 
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
     const { id } = req.params
 
     const promise1 = Restaurant.findById(id)
@@ -73,11 +76,13 @@ router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
             // console.log('Los comentarios --->', comments)
             res.render('restaurants/details', { restaurant, comments })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
+
 })
 
-router.get('/restaurants/details/:id/edit', isLoggedIn, (req, res, next) => {
+router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
 
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
     const { id } = req.params
 
     Restaurant
@@ -85,10 +90,9 @@ router.get('/restaurants/details/:id/edit', isLoggedIn, (req, res, next) => {
         .then(restaurant => {
             res.render('restaurants/update-form', restaurant)
         })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(err)) })
 
-router.post('/restaurants/details/:id/edit', (req, res, next) => {
+router.post('/details/:id/edit', (req, res, next) => {
 
     const { id } = req.params
 
@@ -108,10 +112,9 @@ router.post('/restaurants/details/:id/edit', (req, res, next) => {
         .then(restaurant => {
             res.redirect(`/restaurants/details/${restaurant.id}`)
         })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(err)) })
 
-router.post('/restaurants/:id/delete', isLoggedIn, (req, res) => {
+router.post('/:id/delete', isLoggedIn, (req, res) => {
 
     const { id } = req.params
 
@@ -120,7 +123,6 @@ router.post('/restaurants/:id/delete', isLoggedIn, (req, res) => {
         .then(() => {
             res.redirect('/restaurants')
         })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(err)) })
 
 module.exports = router

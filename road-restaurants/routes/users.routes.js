@@ -4,7 +4,23 @@ const User = require('./../models/User.model')
 
 const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
 
-router.get('/users/details', isLoggedIn, (req, res, next) => {
+router.get('/', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
+
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
+
+    User
+        .find()
+        .then(users => {
+            res.render('users/list', { users })
+        })
+        .catch(err => next(err))
+})
+
+
+//User profile
+router.get('/details', isLoggedIn, (req, res, next) => {
+
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
 
     const { _id } = req.session.currentUser
     User
@@ -12,11 +28,11 @@ router.get('/users/details', isLoggedIn, (req, res, next) => {
         .then(user => {
             res.render('users/my-profile', { user })
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
-router.get('/users/details/:id/edit', isLoggedIn, (req, res, next) => {
-  
+router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
+
     const { id } = req.params
 
     User
@@ -24,12 +40,10 @@ router.get('/users/details/:id/edit', isLoggedIn, (req, res, next) => {
         .then(user => {
             res.render('users/update-form', user)
         })
-        .catch(err => console.log(err))
-
+        .catch(err => next(err))
 });
 
-router.post('/users/details/:id/edit', (req, res, next) => {
-    
+router.post('/details/:id/edit', (req, res, next) => {
     const { id } = req.params
     const { username, email, bio, password } = req.body
 
@@ -38,11 +52,10 @@ router.post('/users/details/:id/edit', (req, res, next) => {
         .then(updateUser => {
             res.redirect('/users/details')
         })
-        .catch(err => console.log(err))
-
+        .catch(err => next(err))
 });
 
-router.post('/users/details/:id/delete', isLoggedIn, (req, res, next) => {
+router.post('/details/:id/delete', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -51,8 +64,7 @@ router.post('/users/details/:id/delete', isLoggedIn, (req, res, next) => {
         .then(() => {
             res.redirect('/')
         })
-        .catch(err => console.log(err))
-
+        .catch(err => next(err))
 });
 
 module.exports = router;

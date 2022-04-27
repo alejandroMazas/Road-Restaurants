@@ -35,6 +35,13 @@
                <li class="nav-item">
                   <a class="nav-link" href="/login">Iniciar sesión</a>
                </li>
+
+               {{#if isAdmin}}
+               <li class="nav-item">
+                  <a class="nav-link" href="/users">Usuarios</a>
+               </li>
+               {{/if}}
+
             </ul>
             <form class="d-flex">
                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
