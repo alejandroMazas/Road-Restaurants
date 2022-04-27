@@ -29,13 +29,6 @@
 
     </div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <h1>Comentarios</h1>
-                <hr>
-                <form action="/comment/create" method="POST">
-
 </div>
 
 <hr>
@@ -43,7 +36,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <h1>Comentarios</h1>
+            <h3>Comentarios</h3>
             <hr>
             <form action="/comment/{{restaurant._id}}/create" method="POST">
 
@@ -58,10 +51,25 @@
 
             <div class="mb-3">
 
+
+
                 {{#each comments}}
-                <p>{{comment}}</p>
-                <p>{{author.username}}</p>
+                {{#with comment}}
+                <div>
+                    <h5>{{author.username}}</h5>
+                </div>
+                <div>
+                    <p>{{comment}}</p>
+                </div>
+                <hr>
+                {{#if ../isOwned}}
+                <form action="/comment/{{../../restaurant._id}}/delete/{{_id}}" method="POST">
+                    <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                </form>
+                {{/if}}
+                {{/with}}
                 {{/each}}
+
             </div>
         </div>
     </div>
