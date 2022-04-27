@@ -46,10 +46,24 @@ router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
     const { id } = req.params
 
     const promise1 = Restaurant.findById(id)
-    const promise2 = Comment.find({ restaurant: id }).populate('author')
+    const promise2 = Comment
+        .find({ restaurant: id })
+        .populate('author')
+        .then(response => {
+            const comments = response.map(eachComment => {
+                // console.log(eachComment)
+                return {
+                    comment: eachComment,
+                    isOwned: eachComment.author._id == req.session.currentUser._id
+                }
+            })
+            return comments
+        })
+
 
     Promise
         .all([promise1, promise2])
+        // .then(response => console.log(response))
         .then(([restaurant, comments]) => {
             // console.log('El restaurante --->', restaurant)
             // console.log('Los comentarios --->', comments)
@@ -58,12 +72,6 @@ router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 
 
-    //     Restaurant
-    //         .findById(id)
-    //         .then(restaurant => {
-    //             res.render('restaurants/details', restaurant)
-    //         })
-    //         .catch(err => console.log(err))
 })
 
 router.get('/restaurants/details/:id/edit', isLoggedIn, (req, res, next) => {

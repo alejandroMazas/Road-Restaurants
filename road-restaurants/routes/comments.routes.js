@@ -19,4 +19,19 @@ router.post('/comment/:id/create', isLoggedIn, (req, res) => {
 
 })
 
+
+router.post('/comment/:restaurantId/delete/:commentId', (req, res) => {
+
+    const { restaurantId, commentId } = req.params
+
+    Comment
+        .findByIdAndDelete(commentId)
+        .then(() => {
+            res.redirect(`/restaurants/details/${restaurantId}`)
+        })
+        .catch(err => console.log(err))
+})
+
+
+
 module.exports = router;
