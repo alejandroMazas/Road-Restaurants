@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
 const Comment = require('../models/Comment.model')
+const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard");
 
-router.post('/comment/:id/create', (req, res) => {
+router.post('/comment/:id/create', isLoggedIn, (req, res) => {
 
     const { comment } = req.body
     const { id } = req.params   // id del restaurante

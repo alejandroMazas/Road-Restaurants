@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const Restaurant = require('../models/Restaurant.model')
-const Comment = require('../models/Comment.model')
+const Comment = require('../models/Comment.model');
+const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard");
 
-router.get('/restaurants/create', (req, res) => {
-    res.render('restaurants/create-form')
+router.get('/restaurants/create', isLoggedIn, (req, res, next) => {
+    res.render('restaurants/create-form', { user: req.session.currentUser })
+
+
+
 })
 
-
-
-router.post('/restaurants/create', (req, res) => {
+router.post('/restaurants/create', (req, res, next) => {
 
     const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion } = req.body
 
@@ -39,7 +41,7 @@ router.get('/restaurants', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.get('/restaurants/details/:id', (req, res) => {
+router.get('/restaurants/details/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -64,7 +66,7 @@ router.get('/restaurants/details/:id', (req, res) => {
     //         .catch(err => console.log(err))
 })
 
-router.get('/restaurants/details/:id/edit', (req, res) => {
+router.get('/restaurants/details/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -76,7 +78,7 @@ router.get('/restaurants/details/:id/edit', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.post('/restaurants/details/:id/edit', (req, res) => {
+router.post('/restaurants/details/:id/edit', (req, res, next) => {
 
     const { id } = req.params
 
@@ -99,7 +101,7 @@ router.post('/restaurants/details/:id/edit', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.post('/restaurants/:id/delete', (req, res) => {
+router.post('/restaurants/:id/delete', isLoggedIn, (req, res) => {
 
     const { id } = req.params
 
@@ -110,6 +112,5 @@ router.post('/restaurants/:id/delete', (req, res) => {
         })
         .catch(err => console.log(err))
 })
-
 
 module.exports = router

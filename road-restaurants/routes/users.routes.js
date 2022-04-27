@@ -6,7 +6,7 @@ const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
 
 
 //User profile
-router.get('/users/details', (req, res, next) => {
+router.get('/users/details', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.session.currentUser
     User
@@ -17,7 +17,7 @@ router.get('/users/details', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/users/details/:id/edit', (req, res, next) => {
+router.get('/users/details/:id/edit', isLoggedIn, (req, res, next) => {
     const { id } = req.params
 
     User
@@ -42,9 +42,9 @@ router.post('/users/details/:id/edit', (req, res, next) => {
 
 });
 
-router.post('/users/details/:id/delete', (req, res, next) => {
+router.post('/users/details/:id/delete', isLoggedIn, (req, res, next) => {
 
-    const {id} = req.params
+    const { id } = req.params
 
     User
         .findByIdAndDelete(id)

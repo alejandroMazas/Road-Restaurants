@@ -23,19 +23,11 @@
 
             <p class="features">Opinión {{opinion}}</p>
 
-            <a class="editButton" href="/restaurants/{{_id}}/edit">Editar restaurante</a>
+            <a class="editButton" href="/restaurants/details/{{_id}}/edit">Editar restaurante</a>
             {{/with}}
         </div>
 
     </div>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <h1>Comentarios</h1>
-                <hr>
-                <form action="/comment/create" method="POST">
-
 </div>
 
 <hr>
@@ -61,6 +53,11 @@
                 {{#each comments}}
                 <p>{{comment}}</p>
                 <p>{{author.username}}</p>
+
+                <form action="/coments/{{_id}}/delete" method="POST">
+                    <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                </form>
+
                 {{/each}}
             </div>
         </div>
