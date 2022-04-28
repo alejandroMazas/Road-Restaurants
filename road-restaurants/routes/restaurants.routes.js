@@ -17,6 +17,7 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
 
 
     const { path } = req.file
+    const { _id } = req.session.currentUser
     const { restaurantname, type, place, description, rating, quality, service, ambience, opinion, area, longitude, latitude, province } = req.body
 
     const location = {
@@ -27,6 +28,7 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
     Restaurant
         .create({
             name: restaurantname,
+            owner: _id,
             image: path,
             type,
             place,
@@ -35,7 +37,7 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
             ratingDetails: { qualityPrice: quality, service: service, ambience: ambience, },
             opinion,
             area,
-            location, 
+            location,
             province
         })
         .then(newRestaurant => {

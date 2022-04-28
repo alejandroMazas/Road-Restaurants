@@ -1,6 +1,7 @@
 const router = require("express").Router()
 
 const User = require('./../models/User.model')
+const Restaurant = require('../models/Restaurant.model')
 
 const fileUploader = require("../config/cloudinary.config")
 
@@ -21,10 +22,13 @@ router.get('/', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 router.get('/details', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.session.currentUser
-    User
-        .findById(_id)
-        .then(user => {
-            res.render('users/my-profile', { user })
+    const promise1 = User.findById(_id)
+    const promise2 = Restaurant.find({ owner: _id })
+
+    Promise
+        .all([promise1, promise2])
+        .then(([user, restaurants]) => {
+            res.render('users/my-profile', { user, restaurants })
         })
         .catch(err => next(err))
 })

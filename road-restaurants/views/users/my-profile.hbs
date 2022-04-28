@@ -31,5 +31,16 @@
         <button class="btn btn-sm btn-warning" type="submit">Cerrar sesión</button>
     </form>
 
+    <div>
+        {{#each restaurants}}
+        <p>{{name}}</p>
+        <figure><img src="{{image}}" alt="imagen"></figure>
+
+        <p class="features">Descripción {{description}}</p>
+        <p class="features">Puntuación {{rating}}</p>
+        <p class="features" id="location">Dirección: {{area}}</p>
+        {{/each}}
+    </div>
+
 
 </div>

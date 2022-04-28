@@ -6,6 +6,10 @@ const restaurantSchema = new Schema(
         name: {
             type: String, required: [true, 'El nombre del restaurante es obligatorio'],
         },
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         image: String,
         type: {
             type: String,
