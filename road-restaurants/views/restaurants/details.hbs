@@ -2,14 +2,18 @@
 
     <div class="row">
 
+
+
+        {{#with restaurant}}
+        <h2>{{name}}</h2>
+
+        <hr>
         <div class="col-6">
 
-            {{#with restaurant}}
-            <h2>{{name}}</h2>
+            <figure><img class="restaurantImg" src="{{image}}" alt="imagen"></figure>
+        </div>
 
-            <hr>
-
-            <figure><img src="{{image}}" alt="imagen"></figure>
+        <div class="col-6">
 
             <p class="features"><strong>Tipo:</strong> {{type}}</p>
             <p class="features"><strong>Lugar de emplazamiento:</strong> {{place}}</p>
@@ -24,14 +28,31 @@
             </ul>
 
             <p class="features">Opinión {{opinion}}</p>
-
-
-
-            <a class="editButton" href="/restaurants/details/{{_id}}/edit">Editar restaurante</a>
+            <a class="editButton2" href="/restaurants/details/{{_id}}/edit">Editar restaurante</a>
             {{/with}}
+
 
         </div>
 
+
+
+
+    </div>
+
+</div>
+
+
+
+<div class="container">
+
+    <hr>
+
+    <div class="row justify-content">
+        <div class="col-md-8">
+
+            <figure class="mapBox" id="detailsMap"></figure>
+
+        </div>
     </div>
 </div>
 
@@ -40,8 +61,9 @@
 <div class="container">
     <div class="row justify-content">
         <div class="col-md-4">
+
             <h3>Comentarios</h3>
-            <hr>
+
             <form action="/comment/{{restaurant._id}}/create" method="POST">
 
                 <div class="mb-3">
@@ -81,19 +103,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content">
-        <div class="col-md-8">
-
-            <figure id="detailsMap"></figure>
-
-        </div>
-    </div>
 </div>
-
-{{!-- 
-<p id="lata" hidden>{{restaurant.location.coordinates.[0]}}</p>
-<p id="lnga" hidden>{{restaurant.location.coordinates.[1]}}</p> --}}
-
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 

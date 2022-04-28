@@ -46,13 +46,10 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
         .catch(err => next(err))
 })
 
-router.get('/', (req, res) => {
-
-    // const isAdmin = req.session.currentUser.role === 'ADMIN'
+router.get('/', (req, res, next) => {
 
     Restaurant
         .find()
-        .populate('author')
         .then(restaurants => {
             res.render('restaurants/list', { restaurants })
         })
@@ -61,7 +58,6 @@ router.get('/', (req, res) => {
 
 router.post('/filter', (req, res) => {
 
-    // const isAdmin = req.session.currentUser.role === 'ADMIN'
     const { province } = req.body
 
     Restaurant

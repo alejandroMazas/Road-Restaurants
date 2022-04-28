@@ -2,10 +2,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-nav {
-    margin-bottom: 30px;
-}
-
 #map {
     height: 400px;
     background-color: red;
@@ -14,6 +10,15 @@ nav {
 #detailsMap {
     height: 400px;
     background-color: red;
+}
+
+.mapBox {
+    width: 1300px;
+    margin: auto;
+}
+
+nav {
+    margin-bottom: 30px;
 }
 
 #searchInput {
@@ -26,4 +31,97 @@ nav {
     text-overflow: ellipsis;
     width: 50%;
     display: flex;
+}
+
+.card-img-top {
+    height: 300px;
+    margin-top: 10px;
+}
+
+.starIcon {
+    width: 45px;
+}
+
+.generalRating {
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.editButton {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 153, 0);
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.editButton2 {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 153, 0);
+    padding: 8px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.deleteButton {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(63, 47, 143);
+    padding: 8.5px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.deleteButton2 {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(63, 47, 143);
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.cardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boxGeneralRating {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.star {
+    margin-left: 10px;
+}
+
+.profileImg {
+    width: 500px;
+}
+
+.img-fluid {
+    height: 135px;
+}
+
+.restaurantImg {
+    width: 600px;
 }

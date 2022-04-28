@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="row">
+    <div class="row" class="search">
 
         <div class="col-6">
             <form method="POST" action="/restaurants/filter" class="form-inline my-2 my-lg-0">
@@ -16,38 +16,43 @@
 
         {{#each restaurants}}
 
-        <div class="col-6">
+        <div class="col-4">
 
             <br>
             <div class="row">
 
-                <h1>{{name}}</h1>
+                <div class="card mb-3">
+                    <img src="{{image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        <p class="card-text"><small class="text-muted">{{area}}</small></p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="boxGeneralRating">
+                                    <p class="generalRating">{{rating}}/5</p>
+                                    <figure class="star"><img
+                                            src="../../images/307-3078264_star-rating-icon-rating-star-single-png.png"
+                                            class="starIcon" alt=""></figure>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="cardBottom">
+                                    <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
 
-                <div class="col-6">
-
-                    <figure><img src="{{image}}" alt="imagen"></figure>
-
-                    <p class="features">Descripción: {{description}}</p>
-                    <p class="features">Puntuación: {{rating}}/5</p>
-                    <p class="features" id="location">Dirección: {{area}}</p>
-
-                    <p>Creador {{username}}</p>
-
-
-                    <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+                                    <form action="/restaurants/{{_id}}/delete" method="POST">
+                                        <button class="deleteButton" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
-                    <hr>
-                    <form action="/restaurants/{{_id}}/delete" method="POST">
-                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
-                    </form>
                 </div>
-
             </div>
-
-
-
 
         </div>
         {{/each}}
