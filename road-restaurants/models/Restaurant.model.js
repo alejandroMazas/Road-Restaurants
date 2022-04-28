@@ -17,7 +17,7 @@ const restaurantSchema = new Schema(
         },
         place: {
             type: String,
-            enum: ["en carretera", "desvio cercano", "en pueblo", "desvio lejos"]
+            enum: ["en carretera", "desvio cercano", "en pueblo", "en autopista"]
         },
         description: String,
         rating: {

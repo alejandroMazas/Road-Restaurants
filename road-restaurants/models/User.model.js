@@ -18,6 +18,14 @@ const userSchema = new Schema(
         },
         image: String,
         bio: String,
+        traveler: {
+            type: String,
+            enum: ["Profesional", "Viajero asiduo", "Escapadas", "Por placer", "Enfermo de la carretera", "Dominguero", "Sedentario"]
+        },
+        foodie: {
+            type: String,
+            enum: ["Bon vivant", "Gourmet", "Vegetarian", "Vegan", "Meat lover", "Foodie", "Realfooder"]
+        },
         password: {
             type: String,
             required: [true, 'La contraseña es obligatoria.']
