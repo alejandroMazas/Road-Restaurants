@@ -15,8 +15,14 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) => {
 
 
-    const { restaurantname, type, place, description, rating, quality, service, ambience, opinion, longitude, latitude } = req.body
+
     const { path } = req.file
+    const { restaurantname, type, place, description, rating, quality, service, ambience, opinion, area, longitude, latitude, province } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+    }
 
     Restaurant
         .create({
@@ -28,10 +34,9 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
             rating,
             ratingDetails: { qualityPrice: quality, service: service, ambience: ambience, },
             opinion,
-            location: {
-                type: 'Point',
-                coordinates: [longitude, latitude]
-            }
+            area,
+            location, 
+            province
         })
         .then(newRestaurant => {
             res.redirect('/')
@@ -46,6 +51,20 @@ router.get('/', (req, res) => {
     Restaurant
         .find()
         .then(restaurants => {
+            res.render('restaurants/list', { restaurants })
+        })
+        .catch(err => next(err))
+})
+
+router.post('/filter', (req, res) => {
+
+    // const isAdmin = req.session.currentUser.role === 'ADMIN'
+    const { province } = req.body
+
+    Restaurant
+        .find({ province: province })
+        .then(restaurants => {
+            console.log('FILTRADOOOOOOS ----->', restaurants)
             res.render('restaurants/list', { restaurants })
         })
         .catch(err => next(err))
@@ -83,6 +102,10 @@ router.get('/details/:id', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 
 })
+
+
+
+
 
 router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
 

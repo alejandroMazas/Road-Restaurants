@@ -10,5 +10,15 @@ router.get('/json', (req, res) => {
         .catch(err => console.log(err))
 })
 
+router.get('/:id/json', (req, res) => {
+
+    const { id } = req.params
+
+    Restaurant
+        .findById(id)
+        .then(restaurant => res.json(restaurant))
+        .catch(err => console.log(err))
+})
+
 
 module.exports = router

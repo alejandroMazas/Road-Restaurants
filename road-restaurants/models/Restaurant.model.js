@@ -20,6 +20,12 @@ const restaurantSchema = new Schema(
             enum: [1, 2, 3, 4, 5],
             required: [true, 'Añade una puntuación general'],
         },
+        area: {
+            type: String,
+        },
+        province: {
+            type: String,
+        },
         ratingDetails: {
             qualityPrice: {
                 type: Number,
@@ -54,6 +60,6 @@ const restaurantSchema = new Schema(
 restaurantSchema.index({ location: '2dsphere' })
 
 const Place = model("Restaurant", restaurantSchema);
-
+Place.syncIndexes()
 module.exports = Place;
 

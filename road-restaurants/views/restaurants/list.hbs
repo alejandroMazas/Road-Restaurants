@@ -2,24 +2,39 @@
 
     <div class="row">
 
+        <div class="col-6">
+            <form method="POST" action="/restaurants/filter" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Filtrar por provincia"
+                    aria-label="Search" id="province" name="province">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda por provincia</button>
+            </form>
+        </div>
+
+        <div class="col-3">
+            <a href="/restaurants/create/" class="btn btn-outline-success my-2 my-sm-0">Crear restaurante</a>
+        </div>
+
         {{#each restaurants}}
 
         <div class="col-6">
 
+            <br>
             <div class="row">
 
                 <h1>{{name}}</h1>
 
                 <div class="col-6">
 
-
                     <figure><img src="{{restaurant.image}}" alt="imagen"></figure>
 
                     <p class="features">Descripción {{description}}</p>
                     <p class="features">Puntuación {{rating}}</p>
+                    <p class="features" id="location">Dirección: {{area}}</p>
+
+
                     <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
 
-                    <a href="/restaurants/create/">Crear restaurante</a>
+
 
                     <hr>
                     <form action="/restaurants/{{_id}}/delete" method="POST">
@@ -44,23 +59,4 @@
 
 
 
-    <div class="row justify-content">
-        <div class="col-md-8">
-    
-            <figure id="map"></figure>
-    
-        </div>
-    </div>
-    </div>
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/js/places-map.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>
-
-
 <a href="/">Volver al incio</a>
-
