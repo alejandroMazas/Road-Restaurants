@@ -2,11 +2,11 @@ const router = require("express").Router()
 
 const User = require('./../models/User.model')
 
+const fileUploader = require("../config/cloudinary.config")
+
 const { isLoggedIn, checkRole } = require('./../utils/middlewares/route.guard')
 
 router.get('/', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
-
-    // const isAdmin = req.session.currentUser.role === 'ADMIN'
 
     User
         .find()
@@ -19,8 +19,6 @@ router.get('/', isLoggedIn, checkRole('ADMIN'), (req, res, next) => {
 
 //User profile
 router.get('/details', isLoggedIn, (req, res, next) => {
-
-    // const isAdmin = req.session.currentUser.role === 'ADMIN'
 
     const { _id } = req.session.currentUser
     User
@@ -43,12 +41,14 @@ router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 });
 
-router.post('/details/:id/edit', (req, res, next) => {
+router.post('/details/:id/edit', fileUploader.single('updatedProfileImage'), (req, res, next) => {
+
     const { id } = req.params
     const { username, email, bio, password } = req.body
+    const { path } = req.file
 
     User
-        .findByIdAndUpdate(id, { username, email, bio, password })
+        .findByIdAndUpdate(id, { username, email, bio, image: path, password })
         .then(updateUser => {
             res.redirect('/users/details')
         })
@@ -62,7 +62,18 @@ router.post('/details/:id/delete', isLoggedIn, (req, res, next) => {
     User
         .findByIdAndDelete(id)
         .then(() => {
-            res.redirect('/')
+            if (req.session.currentUser._id == id) {
+                req.app.locals.isAdmin = false
+                req.app.locals.isUser = false
+                req.session.destroy(() => res.redirect('/'))
+
+            } else if (req.session.currentUser.role === 'ADMIN') {
+                res.redirect('/users')
+            } else {
+                req.app.locals.isUser = false
+                req.session.destroy(() => res.redirect('/'))
+            }
+
         })
         .catch(err => next(err))
 });

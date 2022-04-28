@@ -7,15 +7,17 @@
 
             <h2>Editar restaurante</h2>
 
-            <form action="/restaurants/details/{{id}}/edit" method="POST">
+            <form action="/restaurants/details/{{id}}/edit" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="restaurantname" class="form-label">Nombre</label>
                     <input type="text" class="form-control" name="restaurantname" value="{{name}}">
                 </div>
+
                 <div class="mb-3">
-                    <label for="image" class="form-label">Imagen</label>
-                    <input type="text" class="form-control" name="image" value="{{image}}">
+                    <label for="image" class="form-label">Subir una imagen</label>
+                    <input class="form-control" type="file" id="image" name="updatedRestaurantImage">
                 </div>
+
                 <div class="mb-3">
                     <label for="type" class="form-label">Tipo</label>
                     <select name="type" class="form-select" selected="{{type}}">
@@ -28,6 +30,7 @@
                         <option value="varios">Varios</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="type" class="form-label">Lugar de emplazamiento</label>
                     <select name="place" class="form-select" selected="{{place}}">
@@ -38,10 +41,12 @@
                         <option value="desvio lejano">Desvio lejano</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="description" class="form-label">Descripción</label>
                     <input type="text" class="form-control" name="description" value="{{description}}">
                 </div>
+
                 <div class="mb-3">
                     <label for="rating" class="form-label">Puntuación</label value="{{rating}}">
                     <select name="rating" class="form-select" selected="{{rating}}">
@@ -53,6 +58,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="quality" class="form-label">Calidad</label>
                     <select name="quality" class="form-select" selected="{{ratingDeatils.qualityPrice}}">
@@ -64,6 +70,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="service" class="form-label">Servicio</label>
                     <select name="service" class="form-select" selected="{{ratingDeatils.service}}">
@@ -75,6 +82,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="ambience" class="form-label">Ambiente</label>
                     <select name="ambience" class="form-select" selected="{{ratingDeatils.ambience}}">
@@ -86,6 +94,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label for="opinion" class="form-label">Opinión</label>
                     <input type="text" class="form-control" name="opinion" value="{{opinion}}">

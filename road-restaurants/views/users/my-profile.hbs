@@ -1,25 +1,27 @@
 <div class="container">
 
-    <h1>profile</h1>
+    <h1>Perfil</h1>
 
     <hr>
 
     <div class="row">
-        <ul>
-            <li>
-                {{user.username}}
-            </li>
-            <li>
-                '{{user.bio}}'
-            </li>
-            <li>
-                {{user.email}}
-            </li>
-            <li>
-                <img src="{{user.image}}" alt="imagen">
+        <div class="col-6">
+            <ul>
+                <li>
+                    {{user.username}}
+                </li>
+                <li>
+                    '{{user.bio}}'
+                </li>
+                <li>
+                    {{user.email}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <figure><img src="{{user.image}}" alt="Foto de perfil"></figure>
+        </div>
 
-            </li>
-        </ul>
 
     </div>
 

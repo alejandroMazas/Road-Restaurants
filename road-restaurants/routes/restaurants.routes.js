@@ -3,6 +3,8 @@ const router = require("express").Router()
 const Restaurant = require('../models/Restaurant.model')
 const Comment = require('../models/Comment.model')
 
+const fileUploader = require("../config/cloudinary.config")
+
 const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard")
 
 router.get('/create', isLoggedIn, (req, res, next) => {
@@ -10,10 +12,12 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/create', (req, res, next) => {
+router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) => {
 
 
-    const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion, area, longitude, latitude, province } = req.body
+
+    const { path } = req.file
+    const { restaurantname, type, place, description, rating, quality, service, ambience, opinion, area, longitude, latitude, province } = req.body
 
     const location = {
         type: 'Point',
@@ -23,7 +27,7 @@ router.post('/create', (req, res, next) => {
     Restaurant
         .create({
             name: restaurantname,
-            image,
+            image: path,
             type,
             place,
             description,
@@ -116,16 +120,16 @@ router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/details/:id/edit', (req, res, next) => {
+router.post('/details/:id/edit', fileUploader.single('updatedRestaurantImage'), (req, res, next) => {
 
     const { id } = req.params
-
-    const { restaurantname, image, type, place, description, rating, quality, service, ambience, opinion } = req.body
+    const { path } = req.file
+    const { restaurantname, type, place, description, rating, quality, service, ambience, opinion } = req.body
 
     Restaurant
         .findByIdAndUpdate(id, {
             name: restaurantname,
-            image,
+            image: path,
             type,
             place,
             description,
