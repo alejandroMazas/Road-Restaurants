@@ -6,7 +6,7 @@
 
             <hr>
 
-            <form action="/register" method="POST">
+            <form action="/register" method="POST" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="username" class="form-label">Nombre de usuario</label>
@@ -14,30 +14,29 @@
                         placeholder="Introduzca su nombre de usuario/a. (min. 3 carácteres)" name="username">
                     <div class="form-text">Campo Obligatorio</div>
                 </div>
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" id="email" placeholder="Introduzca su email" name="email">
                     <div class="form-text">Campo Obligatorio</div>
-
                 </div>
+
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="password"
                         placeholder="Introduzca una contraseña (min. 3 carácteres)" name="plainPassword">
                     <div class="form-text">Campo Obligatorio</div>
-
                 </div>
+
                 <div class="mb-3">
                     <label for="bio" class="form-label">Sobre ti</label>
                     <input type="text" class="form-control" id="bio" placeholder="Breve descripcion sobre ti"
                         name="bio">
                 </div>
+
                 <div class="mb-3">
-                    <label for="userImage" class="form-label">Subir imagen de perfil</label>
-                    <br>
-                    {{!-- <form action="#">
-                        <input type="file" name="image">
-                    </form> --}}
+                    <label for="image" class="form-label">Subir una imagen</label>
+                    <input class="form-control" type="file" id="image" name="profileImage">
                 </div>
 
                 <button type="submit" class="btn btn-dark">Crear Nuevo Usuario/a</button>

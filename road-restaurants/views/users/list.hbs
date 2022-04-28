@@ -10,13 +10,12 @@
 
                 <h1><a href="/users/details/{{_id}}"></a>{{username}}</h1>
 
+                <figure><img src="{{image}}" alt="imagen"></figure>
+
                 <div class="col-6">
 
-
-                    <figure><img src="{{user.image}}" alt="imagen"></figure>
-
                     <hr>
-                    <form action="/restaurants/{{_id}}/delete" method="POST">
+                    <form action="/users/details/{{_id}}/delete" method="POST">
                         <button class="btn btn-sm btn-warning" type="submit">Delete</button>
                     </form>
 

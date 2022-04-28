@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Restaurant = require('../models/Restaurant.model')
 
 
-router.get('/api/json', (req, res) => {
+router.get('/json', (req, res) => {
 
     Restaurant
         .find()
