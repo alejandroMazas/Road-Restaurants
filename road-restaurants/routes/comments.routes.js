@@ -4,7 +4,7 @@ const Comment = require('../models/Comment.model')
 
 const { isLoggedIn, checkRole } = require("../utils/middlewares/route.guard");
 
-router.post('/:id/create', isLoggedIn, (req, res) => {
+router.post('/:id/create', isLoggedIn, (req, res, next) => {
 
     const { comment } = req.body
     const { id } = req.params   // id del restaurante
@@ -19,7 +19,7 @@ router.post('/:id/create', isLoggedIn, (req, res) => {
 })
 
 
-router.post('/:restaurantId/delete/:commentId', (req, res) => {
+router.post('/:restaurantId/delete/:commentId', (req, res, next) => {
 
     const { restaurantId, commentId } = req.params
 

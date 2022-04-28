@@ -41,7 +41,7 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
             province
         })
         .then(newRestaurant => {
-            res.redirect('restaurants/list')
+            res.redirect('/restaurants')
         })
         .catch(err => next(err))
 })
@@ -142,7 +142,7 @@ router.post('/details/:id/edit', fileUploader.single('updatedRestaurantImage'), 
         .catch(err => next(err))
 })
 
-router.post('/:id/delete', isLoggedIn, (req, res) => {
+router.post('/:id/delete', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 

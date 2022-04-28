@@ -15,13 +15,13 @@ router.get('/register', (req, res) => {
 
 router.post('/register', fileUploader.single('profileImage'), (req, res, next) => {
 
-    const { username, email, bio, plainPassword } = req.body
+    const { username, email, bio, plainPassword, traveler, foodie } = req.body
     const { path } = req.file
 
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(plainPassword, salt))
-        .then(hashedPassword => User.create({ username, email, password: hashedPassword, bio, image: path }))
+        .then(hashedPassword => User.create({ username, email, password: hashedPassword, bio, image: path, traveler, foodie }))
         .then(() => res.redirect('/login'))
         .catch(err => next(err))
 })

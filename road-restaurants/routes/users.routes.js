@@ -48,11 +48,11 @@ router.get('/details/:id/edit', isLoggedIn, (req, res, next) => {
 router.post('/details/:id/edit', fileUploader.single('updatedProfileImage'), (req, res, next) => {
 
     const { id } = req.params
-    const { username, email, bio, password } = req.body
+    const { username, email, bio, password, foodie, traveler } = req.body
     const { path } = req.file
 
     User
-        .findByIdAndUpdate(id, { username, email, bio, image: path, password })
+        .findByIdAndUpdate(id, { username, email, bio, image: path, password, foodie, traveler })
         .then(updateUser => {
             res.redirect('/users/details')
         })
