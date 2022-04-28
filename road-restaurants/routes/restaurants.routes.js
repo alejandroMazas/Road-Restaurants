@@ -39,7 +39,7 @@ router.post('/create', fileUploader.single('restaurantImage'), (req, res, next) 
             province
         })
         .then(newRestaurant => {
-            res.redirect('/')
+            res.redirect('restaurants/list')
         })
         .catch(err => next(err))
 })
@@ -50,6 +50,7 @@ router.get('/', (req, res) => {
 
     Restaurant
         .find()
+        .populate('author')
         .then(restaurants => {
             res.render('restaurants/list', { restaurants })
         })
