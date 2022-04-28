@@ -81,27 +81,37 @@
                     <label for="opinion" class="form-label">Opinión</label>
                     <input type="text" class="form-control" name="opinion">
                 </div>
-{{!-- 
-                <div id="pac-container">
-                    <label for="location" class="form-label">Introduzca un restaurante</label>
-                    <input id="pac-input" type="text" placeholder="Enter a location" />
-                </div>
-        </div>
-        <div id="map"></div>
-        <div id="infowindow-content">
-            <span id="place-name" class="title"></span><br />
-            <span id="place-address"></span>
-        </div> --}}
-        ç
-        <div class="mb-3">
-            <label for="name" class="form-label">Latitud</label>
-            <input type="text" name="latitude" placeholder="latitud" value="{{location.coordinates.[0]}}">
-        </div>
-        <div class="mb-3">
-            <label for="name" class="form-label">Longitud</label>
-            <input type="text" name="longitude" placeholder="longitud" value="{{location.coordinates.[1]}}">
-        </div>
+           
+                <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+                <div id="map"></div>
+                <ul id="geoData">
+                    {{!-- <li>Nombre: <span id="name"></span></li>
+                    <li>Direccion: <span id="location"></span></li>
+                    <li>CP: <span id="postal_code"></span></li>
+                    <li>Pais: <span id="country"></span></li> --}}
+                    {{!-- <li>Latitud: <span id="lat"></span></li>
+                    <li>Longitud: <span id="lon"></span></li> --}}
+                </ul>
 
+                <div class="mb-3">
+                    <label for="name" class="form-label">Direccion</label>
+                    <input type="text" name="area" placeholder="dirección" id='location'>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Provincia</label>
+                    <input type="text" name="province" placeholder="dirección" id='province'>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Latitud</label>
+                    <input type="text" name="latitude" placeholder="latitud" id='lat'>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Longitud</label>
+                    <input type="text" name="longitude" placeholder="longitud" id="lon">
+                </div>
+                <hr>
+
+        
 
         <button type="submit" class="btn btn-primary">Crear Restaurante</button>
         </form>
@@ -112,7 +122,11 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/places-map.js"></script>
+
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&libraries=places&callback=initMap"
+    async defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+}

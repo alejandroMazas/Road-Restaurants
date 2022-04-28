@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container single-restaurant">
 
     <div class="row">
 
@@ -24,7 +24,7 @@
             <p class="features">Opinión {{opinion}}</p>
 
 
-    
+
             <a class="editButton" href="/restaurants/details/{{_id}}/edit">Editar restaurante</a>
             {{/with}}
         </div>
@@ -81,7 +81,7 @@
     <div class="row justify-content">
         <div class="col-md-8">
 
-            <figure id="map"></figure>
+            <figure id="detailsMap"></figure>
 
         </div>
     </div>
@@ -89,8 +89,8 @@
 
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/js/places-map.js"></script>
+
+<script src="/js/details-map.js"></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNlwJnczOEYC8VHb6tkjgFk_AFP9TGNW8&callback=initMap"></script>
