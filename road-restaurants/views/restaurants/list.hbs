@@ -1,61 +1,62 @@
-<div class="container">
+<div class="backgroundRestaurants">
+    <div class="container">
 
-    <div class="row" class="search">
+        <div class="row" class="search">
 
-        <div class="col-6">
-            <form method="POST" action="/restaurants/filter" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Filtrar por comunidad autónoma"
-                    aria-label="Search" id="province" name="province">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda por Comunidad Autónoma</button>
-            </form>
-        </div>
+            <div class="col-6">
+                <form method="POST" action="/restaurants/filter" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Filtrar por comunidad autónoma"
+                        aria-label="Search" id="province" name="province">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda por Comunidad
+                        Autónoma</button>
+                </form>
+            </div>
 
-        <div class="col-3">
-            <a href="/restaurants/create/" class="btn btn-outline-success my-2 my-sm-0">Crear restaurante</a>
-        </div>
+            <div class="col-3">
+                <a href="/restaurants/create/" class="btn btn-outline-success my-2 my-sm-0">Crear restaurante</a>
+            </div>
 
-        {{#each restaurants}}
+            {{#each restaurants}}
 
-        <div class="col-4">
+            <div class="col-4">
 
-            <br>
-            <div class="row">
+                <br>
+                <div class="row">
 
-                <div class="card mb-3">
-                    <img src="{{image}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
-                        <p class="card-text">{{description}}</p>
-                        <p class="card-text"><small class="text-muted">{{area}}</small></p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="boxGeneralRating">
-                                    <p class="generalRating">{{rating}}/5</p>
-                                    <figure class="star"><img
-                                            src="../../images/307-3078264_star-rating-icon-rating-star-single-png.png"
-                                            class="starIcon" alt=""></figure>
+                    <div class="card mb-3">
+                        <img src="{{image}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{name}}</h5>
+                            <p class="card-text">{{description}}</p>
+                            <p class="card-text"><small class="text-muted">{{area}}</small></p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="boxGeneralRating">
+                                        <p class="generalRating">{{rating}}/5</p>
+                                        <figure class="star"><img
+                                                src="../../images/307-3078264_star-rating-icon-rating-star-single-png.png"
+                                                class="starIcon" alt=""></figure>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="cardBottom">
-                                    <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+                                <div class="col-6">
+                                    <div class="cardBottom">
+                                        <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
 
-                                    <form action="/restaurants/{{_id}}/delete" method="POST">
-                                        <button class="deleteButton" type="submit">Delete</button>
-                                    </form>
+                                        <form action="/restaurants/{{_id}}/delete" method="POST">
+                                            <button class="deleteButton" type="submit">Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-
-
-
                 </div>
+
             </div>
-
+            {{/each}}
         </div>
-        {{/each}}
-    </div>
 
+    </div>
 </div>

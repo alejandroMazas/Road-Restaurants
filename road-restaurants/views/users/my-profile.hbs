@@ -1,102 +1,99 @@
-<div class="container">
+<div class="backgroundProfile">
+    <div class="container">
 
-    <div class="row">
-        <div class="col-6">
-
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{user.username}}</h5>
-                            <p class="card-text">{{user.bio}}</p>
-                            <p class="card-text"><small class="text-muted"></small></p>
-
-                            <a href="/users/details/{{user.id}}/edit">Editar perfil</a>
-
-                            <form action="/logout" method="POST">
-                                <button class="btn btn-sm btn-warning" type="submit">Cerrar sesión</button>
-                            </form>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul>
-
-                {{!-- <p>Tags</p>
-                <ul>
-                    <li>
-                        {{user.traveler}}
-                    </li>
-                    <li>
-                        {{user.foodie}}
-                    </li>
-                </ul> --}}
-
-
-            </ul>
-        </div>
-
-
-        <div class="col-6">
-
-            <figure><img class="profileImg" src="{{user.image}}" alt="Foto de perfil"></figure>
-        </div>
-
-    </div>
-
-</div>
-
-<hr>
-
-<div class="container">
-
-    <h3>Restaurantes Creados</h3>
-
-    <div class="col-4">
-
-        <br>
         <div class="row">
+            <div class="col-6">
 
-            <div class="card mb-4">
-                {{#each restaurants}}
-                <img src="{{image}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{name}}</h5>
-                    <p class="card-text">{{description}}</p>
-                    <p class="card-text"><small class="text-muted">{{area}}</small></p>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="boxGeneralRating">
-                                <p class="generalRating">{{rating}}/5</p>
-                                <figure class="star"><img
-                                        src="../../images/307-3078264_star-rating-icon-rating-star-single-png.png"
-                                        class="starIcon" alt=""></figure>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="cardBottom">
-                                <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{user.username}}</h5>
+                                <p class="card-text">{{user.bio}}</p>
+                                <p class="card-text"><small class="text-muted"></small></p>
 
-                                <form action="/restaurants/{{_id}}/delete" method="POST">
-                                    <button class="deleteButton" type="submit">Delete</button>
+                                <a href="/users/details/{{user.id}}/edit">Editar perfil</a>
+
+                                <form action="/logout" method="POST">
+                                    <button class="btn btn-sm btn-warning" type="submit">Cerrar sesión</button>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                {{/each}}
+                <ul>
 
+                    {{!-- <p>Tags</p>
+                    <ul>
+                        <li>
+                            {{user.traveler}}
+                        </li>
+                        <li>
+                            {{user.foodie}}
+                        </li>
+                    </ul> --}}
+
+
+                </ul>
             </div>
 
 
+            <div class="col-6">
+
+                <figure><img class="profileImg" src="{{user.image}}" alt="Foto de perfil"></figure>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="container">
+
+        <h3>Restaurantes Creados</h3>
+
+        <div class="col-4">
+
+            <br>
+            <div class="row">
+
+                <div class="card mb-4">
+                    {{#each restaurants}}
+                    <img src="{{image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{description}}</p>
+                        <p class="card-text"><small class="text-muted">{{area}}</small></p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="boxGeneralRating">
+                                    <p class="generalRating">{{rating}}/5</p>
+                                    <figure class="star"><img
+                                            src="../../images/307-3078264_star-rating-icon-rating-star-single-png.png"
+                                            class="starIcon" alt=""></figure>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="cardBottom">
+                                    <a class="editButton" href="/restaurants/details/{{_id}}">Ver más</a>
+
+                                    <form action="/restaurants/{{_id}}/delete" method="POST">
+                                        <button class="deleteButton" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+
+
+            </div>
         </div>
     </div>
-    <<<<<<< HEAD </div>
-        =======
-
-
 </div>
->>>>>>> 8e38f483d4b11fe6aaffd07bd68875cb6a47a7ef
