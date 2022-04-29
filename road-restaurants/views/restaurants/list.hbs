@@ -1,19 +1,29 @@
 <div class="container">
 
-    <div class="row" class="search">
+    <div class="row">
 
-        <div class="col-6">
+        <div class="col">
             <form method="POST" action="/restaurants/filter" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Filtrar por comunidad autónoma"
                     aria-label="Search" id="province" name="province">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda por Comunidad Autónoma</button>
+                <div class="col"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda por
+                        Comunidad
+                        Autónoma</button></div>
+                <div class="col">
+
             </form>
-        </div>
 
-        <div class="col-3">
-            <a href="/restaurants/create/" class="btn btn-outline-success my-2 my-sm-0">Crear restaurante</a>
         </div>
+    </div>
 
+
+
+
+</div>
+
+<div class="container">
+
+    <div class="row">
         {{#each restaurants}}
 
         <div class="col-4">
@@ -21,7 +31,7 @@
             <br>
             <div class="row">
 
-                <div class="card mb-3">
+                <div class="card mb-3 ">
                     <img src="{{image}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{name}}</h5>

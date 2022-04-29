@@ -65,7 +65,7 @@ function initMap() {
 
         console.log('place.address_components ------>', place.address_components)
         document.getElementById('location').value = place.formatted_address;
-        document.getElementById('province').value = place.address_components[3].long_name
+        document.getElementById('province').value = place.address_components[4].long_name
         document.getElementById('lat').value = place.geometry.location.lat();
         document.getElementById('lon').value = place.geometry.location.lng();
     })
